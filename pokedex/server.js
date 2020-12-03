@@ -26,10 +26,24 @@ app.get('/pokemon/new', (req, res) => {
     res.render('New');
 })
 
-// UPDATE
-app.put('pokemon/:id', (req, res) => {
-    pokemon[req.params.id] = req.body;
+// DELETE
+app.delete('/pokemon/:id', (req, res) => {
+    pokemon.splice(req.params.id, 1);
     res.redirect('/pokemon');
+});
+
+
+// UPDATE
+app.get('pokemon/edit/:id', (req, res) => {
+    let pkmn = null;
+
+    for (let poke in pokemon) {
+        if (pokemon[poke].id == req.params.id) {
+            pkmn = pokemon[poke];
+        }
+    }
+
+    res.render ('Edit', {pokemon: pkmn});
 })
 
 // Create
