@@ -26,9 +26,32 @@ app.get('/pokemon/new', (req, res) => {
     res.render('New');
 })
 
+// UPDATE
+app.put('pokemon/:id', (req, res) => {
+    pokemon[req.params.id] = req.body;
+    res.redirect('/pokemon');
+})
+
 // Create
-app.post("/", (req, res) => {
-    pokemon.push(req.body);
+app.post("/pokemon", (req, res) => {
+    let newPokemon = {
+        id: req.body.id,
+        name: req.body.name,
+        img: req.body.img,
+        type: [
+          req.body.type
+        ],
+        stats: {
+          hp: req.body.hp,
+          attack: req.body.hp,
+          defense: req.body.defense,
+          spattack: req.body.spattack,
+          spdefense: req.body.spdefense,
+          speed: req.body.speed
+        }
+    };
+
+    pokemon.push(newPokemon);
     // redirect the user to the index
     res.redirect("/pokemon")
 })

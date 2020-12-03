@@ -1,12 +1,14 @@
 const React = require('react');
+const Layout = require('./layout/Layout.jsx');
 
-class New extends React.Component {
+class Edit extends React.Component {
   render() {
+    const pokemon = this.props.pokemon;
     return (
-        <div>
-            <h1>New Pokemon</h1>
-            {/* NOTE: action will be the route, method will be the HTTP verb */}
-            <form action="/pokemon" method="POST">
+      <Layout>
+        <h1>{pokemon.name} Edit page</h1>
+            <form action={`/pokemon/${this.props.index}?_method=PUT`} method="POST">
+
               Name:     <input type="text" name="name" /><br/>
               id:       <input type="text" name="id" /><br/>
               img:      <input type="image" name="img" /><br/>
@@ -19,10 +21,10 @@ class New extends React.Component {
               Spdefense <input type="text" name="spdefense" /><br/>
               Speed     <input type="text" name="speed" /><br/>
               
-              <input type="submit" name="" value="Create Pokemon"/>
-            </form>
-        </div>);
-    }
+        <input type="submit" name="" value="Submit Changes"/>
+        </form>
+      </Layout>
+    )
   }
-
-module.exports = New;
+}
+module.exports = Edit;

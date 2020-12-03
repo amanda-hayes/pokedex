@@ -1,18 +1,32 @@
 * { 
-    margin: 0; 
+    margin: 20px; 
     padding: 0; 
     /* box-sizing: border-box; 
     border: 1px solid gold;  */
    }
 
+
 h1 {
-    font-family: Pokemon GB;
+    font-family: Pokemon Solid;
+    text-align: center;
+}
+
+h2 {
+    font-family: Pokemon Solid;
 }
 
 a {
     font-family: Pokemon GB;
+    
 }
 
 .image-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 3fr);
+    grid-template-rows: 5fr;
+    width: fit-content;
+    height: 50rem;
+    grid-gap: 30px;
+    font-family: Pokemon GB;
+    text-align: center;
 }
