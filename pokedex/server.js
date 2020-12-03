@@ -22,14 +22,12 @@ app.get('/pokemon', (req, res) => {
 
 
 // NEW
-app.get('/new', (req, res) => {
+app.get('/pokemon/new', (req, res) => {
     res.render('New');
 })
 
 // Create
 app.post("/", (req, res) => {
-    // parse our data into the same structure as the data in our model
-    // push our data to our model
     pokemon.push(req.body);
     // redirect the user to the index
     res.redirect("/pokemon")
@@ -37,9 +35,17 @@ app.post("/", (req, res) => {
 
 
 // SHOW PAGE
-app.get('/pokemon/:idOfPokemonArray', (req, res) => {
+app.get('/pokemon/:id', (req, res) => {
+    let pkmn = null;
+
+    for (let poke in pokemon) {
+        if (pokemon[poke].id == req.params.id) {
+          pkmn = pokemon[poke];
+        }
+       }
+
     res.render ('Show', {
-        pokemon: pokemon[req.params.idOfPokemonArray]
+        pokemon: pkmn
     })
 })
 
